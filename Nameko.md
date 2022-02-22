@@ -20,3 +20,13 @@
 starting services: greeting_service
 Connected to amqp://guest:**@10.0.3.19:5672//
  ```
+- 命令行客户端
+```
+(base) wangjifeideMacBook-Pro:microservices wangjifei$ nameko shell  --broker amqp://10.0.3.19:5672
+Nameko Python 3.6.7 (v3.6.7:6ec5cf24b7, Oct 20 2018, 03:02:14) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.57)] shell on darwin
+Broker: amqp://10.0.3.19:5672
+>>> n.rpc.greeting_service.hello(name="hello")
+'Hello, hello!'
+>>> 
+```

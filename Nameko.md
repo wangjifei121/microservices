@@ -30,3 +30,26 @@ Broker: amqp://10.0.3.19:5672
 'Hello, hello!'
 >>> 
 ```
+- 客户端调用代码
+
+```
+from nameko.standalone.rpc import ClusterRpcProxy
+
+CONFIG = {'AMQP_URI': "amqp://guest:guest@10.0.3.19"}
+
+
+def compute():
+    with ClusterRpcProxy(CONFIG) as rpc:
+        result = rpc.greeting_service.hello('wangjifei')
+
+    return result
+
+if __name__ == '__main__':
+    result = compute()
+    print(result)
+    
+## 执行
+(base) wangjifeideMacBook-Pro:Nameko wangjifei$ python3 producter.py 
+Hello, wangjifei!
+(base) wangjifeideMacBook-Pro:Nameko wangjifei$ 
+```
